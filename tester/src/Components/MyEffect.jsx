@@ -7,6 +7,7 @@ function MyEffect() {
 
     const [count, setCount] = useState(0);
     const [myTitle, setMyTitle] = useState("Page Title")
+    const [divColor, setDivColor] = useState("#D5DEE9");
 
     useEffect(() =>
         { 
@@ -25,7 +26,7 @@ function MyEffect() {
 
     const styles = {
         divi:{
-            backgroundColor: "#D5DEE9",
+            backgroundColor: divColor,
             margin: "20px",
             padding: "10px",
             paddingLeft: "2px",
@@ -44,11 +45,15 @@ function MyEffect() {
 
     let col;
 
-    const getColor = (e) => e.target.value;
+    const getColor = (e) => {
+        col = e.target.value;
+        return col;
+    };
 
 
     const setColor = () => {
-        alert(col);
+        setDivColor(col);
+
     };
 
   return (
@@ -63,7 +68,7 @@ function MyEffect() {
 
         <button onClick={changeTitle}>Set Page Title</button> <br/> <br/>
 
-        <input onChange={() => getColor(e)} type='color' />  <br/> <br/>
+        <input onChange={getColor} type='color' value={"#D5DEE9"}/>  <br/> <br/>
 
         <button onClick={setColor}>Set Color</button> <br/> <br/>
 

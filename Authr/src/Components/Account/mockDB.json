@@ -1,0 +1,56 @@
+[
+  {
+    "id": 1,
+    "name": "lee",
+    "email": "leethedevo@gmail.com",
+    "password": "925d2e9bb3679c1b9dd58ab20bb974fdc61f3ff4db5e12bb54fab0600261c7b3"
+  },
+  {
+    "id": 2,
+    "name": "maestro",
+    "email": "mymean@gmail.com",
+    "password": "db514f5b3285acaa1ad28290f5fefc38f2761a1f297b1d24f8129dd64638825d"
+  },
+  {
+    "id": 3,
+    "name": "junior",
+    "email": "jhadyern@gmailcom",
+    "password": "a3b65bcab98584999df8ade0df82cd9095f5d9182a36e1328dd65bc5ab786c69"
+  },
+  {
+    "id": 4,
+    "name": "dude",
+    "email": "lfeethedevo@gmail.com",
+    "password": "ce64cfa757a8a8754deebc0ade568268b2716612987d70562586baf4e19b58c3"
+  },
+  {
+    "id": 5,
+    "name": "namasadse",
+    "email": "email@gmail.com",
+    "password": "8711e9106cbe7085af932dc2b925e0279ebbe72f3eb41412fa76dc1c592b009f"
+  },
+  {
+    "id": 6,
+    "name": " Node.js&v25.2.1",
+    "email": "dv@gj.uu",
+    "password": "6b6e227d73a5f1f2485f7797b5b6103b3887effb2dfa6789d247e519d8406c28"
+  },
+  {
+    "id": 7,
+    "name": "NewUser",
+    "email": "newuser@gmail.com",
+    "password": "08f3f5961f976b69d5241ac444c17027bf677e22d57d890844aaac745dab9fe9"
+  },
+  {
+    "id": 8,
+    "name": "newuser1",
+    "email": "newuser1@gmail.com",
+    "password": "78e725250645aab5d7395f93f8c31d76d24b1432ce05b6cf26a71b12d0732f53"
+  },
+  {
+    "id": 9,
+    "name": "Newuser",
+    "email": "ksf@fd.cd",
+    "password": "08f3f5961f976b69d5241ac444c17027bf677e22d57d890844aaac745dab9fe9"
+  }
+]
