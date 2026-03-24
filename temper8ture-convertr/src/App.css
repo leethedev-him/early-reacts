@@ -1,0 +1,237 @@
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:        #eef0f5;
+      --surface:   #e2e5ed;
+      --card:      #f5f6fa;
+      --border:    #d4d8e4;
+      --btn-num:   #ffffff;
+      --btn-op:    #dde1f0;
+      --btn-eq:    #2d2dff;
+      --btn-clr:   #ffe8e8;
+      --text:      #1a1a2e;
+      --text-dim:  #8890b0;
+      --accent:    #2d2dff;
+      --accent2:   #ff4d6d;
+      --radius:    20px;
+      --gap:       10px;
+    }
+
+    body {
+      min-height: 100dvh;
+      background: var(--bg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Syne', sans-serif;
+      padding: 20px;
+      background-image:
+        radial-gradient(ellipse 60% 40% at 70% 10%, rgba(45,45,255,.07) 0%, transparent 60%),
+        radial-gradient(ellipse 40% 50% at 10% 90%, rgba(255,77,109,.06) 0%, transparent 60%);
+    }
+
+    .calculator {
+      width: 100%;
+      max-width: 360px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 32px;
+      padding: 24px 20px 20px;
+      box-shadow:
+        0 20px 60px rgba(100,110,180,.15),
+        0 4px 16px rgba(100,110,180,.08),
+        0 0 0 1px rgba(255,255,255,.8) inset;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .calculator::before {
+      content: '';
+      position: absolute;
+      top: -60px; right: -60px;
+      width: 180px; height: 180px;
+      background: radial-gradient(circle, rgba(45,45,255,.08) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    /* ── Header ── */
+    .calc-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 20px;
+      padding: 0 4px;
+    }
+    .calc-label {
+      font-family: 'Syne', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      text-align: center;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+    }
+    .calc-dots {
+      display: flex;
+      gap: 6px;
+    }
+    .calc-dots span {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: var(--border);
+    }
+    .calc-dots span:first-child { background: var(--accent2); }
+    .calc-dots span:nth-child(2) { background: #f5a623; }
+    .calc-dots span:last-child  { background: #4caf82; }
+
+    /* ── Display ── */
+    .display {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px 22px 16px;
+      margin-bottom: 20px;
+      min-height: 110px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      position: relative;
+      overflow: hidden;
+    }
+    .display::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--accent), transparent);
+      opacity: .3;
+    }
+    .display-value {
+      font-family: 'DM Mono', monospace;
+      font-size: 44px;
+      font-weight: 300;
+      color: var(--text);
+      text-align: right;
+      line-height: 1;
+      letter-spacing: -.02em;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      transition: font-size .15s ease;
+    }
+    .display-value.shrink { font-size: 30px; }
+    .display-value.mini   { font-size: 22px; }
+
+    /* ── Grid ── */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--gap);
+    }
+
+    /* ── Buttons ── */
+    .btn {
+      position: relative;
+      border: none;
+      border-radius: 14px;
+      cursor: pointer;
+      font-family: 'Syne', sans-serif;
+      font-size: 18px;
+      font-weight: 700;
+      height: 68px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform .1s ease, box-shadow .1s ease, background .1s ease;
+      user-select: none;
+      -webkit-tap-highlight-color: transparent;
+      outline: none;
+      overflow: hidden;
+    }
+
+    /* ripple */
+    .btn::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,.06);
+      opacity: 0;
+      transition: opacity .25s;
+      border-radius: inherit;
+    }
+    .btn:active::after { opacity: 1; }
+    .btn:active { transform: scale(.94); }
+
+    /* number */
+    .btn-num {
+      background: var(--btn-num);
+      color: var(--text);
+      border: 1px solid var(--border);
+      box-shadow: 0 2px 8px rgba(100,110,180,.1), 0 1px 0 rgba(255,255,255,.9) inset;
+    }
+    .btn-num:hover { background: #f0f2ff; }
+
+    /* operator */
+    .btn-op {
+      background: var(--btn-op);
+      color: var(--accent);
+      border: 1px solid rgba(45,45,255,.15);
+      box-shadow: 0 2px 8px rgba(45,45,255,.08);
+      font-size: 22px;
+    }
+    .btn-op:hover { background: #d0d6f5; }
+
+    /* clear / func */
+    .btn-clr {
+      background: var(--btn-clr);
+      color: var(--accent2);
+      border: 1px solid rgba(255,77,109,.15);
+      box-shadow: 0 2px 8px rgba(255,77,109,.08);
+    }
+    .btn-clr:hover { background: #ffd6de; }
+
+    /* equals */
+    .btn-eq {
+      background: var(--btn-eq);
+      color: #ffffff;
+      border: none;
+      box-shadow: 0 4px 20px rgba(45,45,255,.4), 0 1px 0 rgba(255,255,255,.2) inset;
+      font-size: 28px;
+    }
+    .btn-eq:hover {
+      background: #1a1aee;
+      box-shadow: 0 6px 28px rgba(45,45,255,.5);
+    }
+
+    /* wide */
+    .btn-wide {
+      grid-column: span 2;
+      border-radius: 14px;
+      font-size: 20px;
+    }
+
+    .togglr{
+      height: 20px;
+      padding: 20px;
+      margin-bottom: 10px;
+      justify-content: center;
+    }
+    .marquee{
+      display: inline-block;
+      position: relative;
+      animation: marquee 10s linear infinite;
+    }
+
+    @keyframes marquee {
+      0% { transform: translateX(100%) }
+      100% { transform: translateX(-100%)}
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 380px) {
+      .btn { height: 60px; font-size: 16px; }
+      .display-value { font-size: 38px; }
+    }
+    @media (min-height: 800px) {
+      .btn { height: 76px; }
+    }
